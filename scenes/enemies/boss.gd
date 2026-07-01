@@ -26,6 +26,7 @@ var _player: Node2D = null
 @onready var _bar_fill: Node2D = get_node_or_null("HealthBar/BarFill")
 @onready var _juice: Node = get_node_or_null("/root/Juice")
 @onready var _audio: Node = get_node_or_null("/root/Audio")
+@onready var _status: Label = get_node_or_null("Status")
 
 func _ready() -> void:
 	hp = max_hp
@@ -142,6 +143,15 @@ func _physics_process(delta: float) -> void:
 			visual.modulate = Color(1, 1, 1).lerp(Color(0.55, 0.85, 1.4), p)  # "zap me" pulse
 		else:
 			visual.modulate = Color(1.0, 0.5, 0.5)            # vulnerable
+
+	# Teach the shield mechanic right on the boss (why FIRE alone "does nothing").
+	if _status != null:
+		if shielded:
+			_status.text = "SHIELDED - zap with ELECTRIC"
+			_status.modulate = Color(0.7, 0.9, 1.4)
+		else:
+			_status.text = "VULNERABLE! - FIRE burns 2x"
+			_status.modulate = Color(1.0, 0.6, 0.5)
 
 func _spawn_minion() -> void:
 	if get_tree().get_nodes_in_group("enemy").size() > 5:

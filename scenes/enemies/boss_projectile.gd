@@ -31,7 +31,9 @@ func _on_hit(node: Node) -> void:
 	if from_boss and node.is_in_group("player") and node.has_method("take_damage"):
 		node.take_damage(12.0)
 		queue_free()
-	elif not from_boss and node.is_in_group("boss") and node.has_method("_take_damage"):
+	elif not from_boss and node.is_in_group("enemy") and node.has_method("_take_damage"):
+		# A Time-reflected shot damages ANY enemy it flies back into — the boss
+		# (bypassing its shield) or a turret that fired it.
 		node._take_damage(30.0)
 		queue_free()
 	elif from_boss and node is StaticBody2D:

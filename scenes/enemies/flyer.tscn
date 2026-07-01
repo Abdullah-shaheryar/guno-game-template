@@ -10,7 +10,7 @@ size = Vector2(46, 36)
 size = Vector2(56, 46)
 
 [node name="Flyer" type="CharacterBody2D"]
-collision_layer = 1
+collision_layer = 4
 collision_mask = 1
 script = ExtResource("1_flyer")
 

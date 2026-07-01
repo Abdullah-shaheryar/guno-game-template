@@ -42,6 +42,14 @@ func mode_label() -> String:
 func mode_key() -> String:
 	return "Mode"
 
+## Gun accent colors (the Gun applies these live): the glowing tip ball and the
+## body tint. Override per mode so the weapon reads its mode at a glance.
+func tip_color() -> Color:
+	return Color(0.4, 0.9, 1.0)
+
+func gun_color() -> Color:
+	return Color(0.34, 0.36, 0.45)   # default gunmetal grey
+
 # --- Shared helpers ----------------------------------------------------------
 ## Instantiate a scene into the running level at a world position.
 func spawn_into_world(scene: PackedScene, pos: Vector2) -> Node:

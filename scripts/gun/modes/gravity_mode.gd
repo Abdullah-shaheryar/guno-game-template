@@ -16,3 +16,9 @@ func mode_label() -> String:
 
 func mode_key() -> String:
 	return "Gravity"
+
+func tip_color() -> Color:
+	return Color(0.72, 0.42, 1.0)
+
+func gun_color() -> Color:
+	return Color(0.44, 0.3, 0.62)

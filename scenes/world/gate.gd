@@ -6,6 +6,8 @@ extends StaticBody2D
 @onready var visual: Polygon2D = $Visual
 
 func set_open(open: bool) -> void:
-	col.disabled = open
+	# Deferred: this is driven from the pressure plate's body_entered/exited
+	# (a physics callback), where a direct collision toggle can be dropped.
+	col.set_deferred("disabled", open)
 	if visual != null:
 		visual.visible = not open

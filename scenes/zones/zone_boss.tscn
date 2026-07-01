@@ -26,17 +26,29 @@ shape = SubResource("floor")
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(9100, 120)
 
+[node name="CeilVis" type="Polygon2D" parent="Ceiling"]
+color = Color(0.16, 0.11, 0.18, 1)
+polygon = PackedVector2Array(-600, -30, 600, -30, 600, 30, -600, 30)
+
 [node name="CeilCol" type="CollisionShape2D" parent="Ceiling"]
 shape = SubResource("ceil")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2(8530, 360)
 
+[node name="LeftWallVis" type="Polygon2D" parent="LeftWall"]
+color = Color(0.16, 0.11, 0.18, 1)
+polygon = PackedVector2Array(-30, -350, 30, -350, 30, 350, -30, 350)
+
 [node name="LeftWallCol" type="CollisionShape2D" parent="LeftWall"]
 shape = SubResource("wall")
 
 [node name="RightWall" type="StaticBody2D" parent="."]
 position = Vector2(9670, 360)
+
+[node name="RightWallVis" type="Polygon2D" parent="RightWall"]
+color = Color(0.16, 0.11, 0.18, 1)
+polygon = PackedVector2Array(-30, -350, 30, -350, 30, 350, -30, 350)
 
 [node name="RightWallCol" type="CollisionShape2D" parent="RightWall"]
 shape = SubResource("wall")

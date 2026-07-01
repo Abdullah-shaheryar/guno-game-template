@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/clone/ghost.gd" id="1_ghost"]
+[ext_resource type="Texture2D" path="res://art/hero.png" id="2_hero"]
 
 [sub_resource type="RectangleShape2D" id="body"]
 size = Vector2(28, 48)
@@ -13,16 +14,18 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_ghost")
 
-[node name="Visual" type="Polygon2D" parent="."]
-color = Color(0.4, 0.95, 1, 0.45)
-polygon = PackedVector2Array(-14, -24, 14, -24, 14, 24, -14, 24)
+[node name="Visual" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("2_hero")
+modulate = Color(0.55, 0.9, 1, 0.55)
 
 [node name="Col" type="CollisionShape2D" parent="."]
 shape = SubResource("body")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1
+collision_mask = 4
 
 [node name="HitCol" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("hit")

@@ -50,24 +50,26 @@ Deeper docs: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** (data-flow & lifec
 
 ### 1. Collision layers & masks
 
-Two physics layers do all the work. **Match this table for anything new**, or things will
-collide wrong (bullets hitting the player, enemies falling through floors, etc.).
+Three physics layers do all the work — **layer 1 = value 1, layer 2 = value 2, layer 3 = value 4**
+(bitmask). **Match this table for anything new**, or things collide wrong.
 
 | Node kind | `collision_layer` | `collision_mask` | Why |
 |---|---|---|---|
 | World / floors / interactables (`StaticBody2D`) | **1** | 0 | solid; doesn't need to scan |
-| Enemy body — walker/flyer/boss (`CharacterBody2D`) | **1** | 1 | solid to player, walks on world |
-| Turret (`StaticBody2D`) | **1** | 0 | solid |
-| Player (`CharacterBody2D`) | **2** | 1 | collides with world (layer 1) |
-| Player bullet / time bolt (`Area2D`) | 0 | **1** | senses world+enemies, **never** the player |
-| Boss projectile (`Area2D`) | **1** | **3** | hits player+world; on layer 1 so a **time bolt can reflect it** |
-| Enemy `Touch`/`Hurt` area (`Area2D`) | 0 | **2** | detects the player only |
-| Clone `Hitbox` (`Area2D`) | 0 | **1** | damages enemies only |
-| Portal (`Area2D`) | 0 | **2** | detects the player only |
+| Player (`CharacterBody2D`) | **2** | 1 | collides with world only (not enemies) |
+| Clone / ghost (`CharacterBody2D`) | **2** | 0 | replays a path; no physics collision |
+| Enemy body — walker/flyer/turret/boss | **4** (layer 3) | 1 or 0 | **pass-through**: player never collides (no stand-on-enemy ejection); still walks on world |
+| Player bullet / time bolt (`Area2D`) | 0 | **5** (1+4) | senses world **and** enemies, **never** the player |
+| Boss projectile (`Area2D`) | **1** | **7** (1+2+4) | hits player+world; a Time-reflected shot reaches any enemy; on layer 1 so a time bolt can catch it |
+| Clone `Hitbox` (`Area2D`) | 0 | **4** | damages enemies only |
+| Enemy `Touch`/`Hurt` area (`Area2D`) | 0 | **2** | detects the player only (contact damage) |
+| Hazard (`Area2D`) | 0 | **6** (2+4) | detects enemies (kills) + player (if `kills_player`) |
+| Portal (`Area2D`) / pressure plate | 0 | **2** | detects the player (+ clone) only |
 
-Mnemonic: **Layer 1 = world + enemies** (things bullets hit). **Layer 2 = player** (thing
-enemies touch). **Projectiles live on layer 0** and are pure sensors (except the boss shot,
-which sits on layer 1 so it can be rewound).
+Mnemonic: **Layer 1 = world**, **layer 2 = player/clone**, **layer 3 = enemy bodies**. Enemies are
+**not solid to the player** (they damage on contact via their `Touch` area, but never physically
+block or launch you). Projectiles live on layer 0 and are pure sensors — except the boss shot,
+which sits on layer 1 so a time bolt can rewind it.
 
 ### 2. Groups (the global registry)
 
@@ -130,8 +132,8 @@ crossing (freeze water, gravity-flip, time bridge). See [`scenes/zones/README.md
   unique stable string (it's the `WeaponProgress` key).
 - **The boss shield gates damage**: only `apply_element("electric")` drops it; other elements/clone
   do nothing while shielded. Don't bypass this.
-- **Keep the collision table above.** New solids → layer 1; new player-sensing areas → mask 2;
-  new bullets → layer 0 / mask 1.
+- **Keep the collision table above.** New solids → layer 1; new **enemy bodies → layer 3 (value 4)**
+  so they don't block the player; player-sensing areas → mask 2; new bullets → layer 0 / mask 5.
 - **Zone floors live in absolute world coordinates** (zones instance at origin). Portal `target` is a
   raw world `Vector2`.
 

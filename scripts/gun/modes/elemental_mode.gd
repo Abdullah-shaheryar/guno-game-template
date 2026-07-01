@@ -3,8 +3,13 @@ extends "res://scripts/gun/gun_mode.gd"
 ## Living Weapon: higher Elemental level => bigger, harder-hitting bullets.
 
 const ELEMENTS := ["fire", "ice", "electric"]
+const TIP_COLORS := [Color(1.0, 0.5, 0.15), Color(0.45, 0.8, 1.0), Color(1.0, 0.95, 0.35)]  # fire / ice / electric
 var index: int = 0
 var _wp: Node = null
+
+# Elemental keeps the default grey gun body; only the tip ball changes colour.
+func tip_color() -> Color:
+	return TIP_COLORS[index]
 
 func _on_enter() -> void:
 	_wp = get_node_or_null("/root/WeaponProgress")

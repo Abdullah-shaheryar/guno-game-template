@@ -21,3 +21,9 @@ func mode_label() -> String:
 
 func mode_key() -> String:
 	return "Time"
+
+func tip_color() -> Color:
+	return Color(0.45, 0.85, 0.95)
+
+func gun_color() -> Color:
+	return Color(0.3, 0.5, 0.56)

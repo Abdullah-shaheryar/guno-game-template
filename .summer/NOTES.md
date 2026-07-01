@@ -15,7 +15,7 @@ Everything talks through **three channels only**:
 
 ## Golden rules (don't break)
 
-- **Collision:** layer 1 = world + enemies, layer 2 = player, projectiles = layer 0 / mask 1.
+- **Collision:** layer 1 = world, layer 2 = player/clone, layer 3 = enemy bodies (pass-through — enemies never block the player); bullets = layer 0 / mask 5.
 - **Gun modes** `extends "res://scripts/gun/gun_mode.gd"` by path, **no `class_name`**; need `fire()`+`activate()`.
 - **`GameStats.reset()`** is menu/retry only (stats persist across reload).
 - **`GravityManager.down`** is always cardinal; actors set `up_direction = -down`.

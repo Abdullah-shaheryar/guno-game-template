@@ -23,3 +23,23 @@ hint = "Walls only break to the right element — switch to FIRE (R) and melt th
 [node name="H5" parent="." instance=ExtResource("1_hz")]
 position = Vector2(1350, 460)
 hint = "Fire ON the beat (the gold ring pulses) for a POWER shot. Grab gold shards!"
+
+[node name="H6" parent="." instance=ExtResource("1_hz")]
+position = Vector2(1430, 460)
+hint = "The water is a gap. Switch to ICE (press R) and shoot it to freeze a bridge — or just jump across."
+
+[node name="H7" parent="." instance=ExtResource("1_hz")]
+position = Vector2(3300, 460)
+hint = "GRAVITY zone: Q/E to this mode, then AIM + FIRE to make that direction DOWN. Walk the walls!"
+
+[node name="H8" parent="." instance=ExtResource("1_hz")]
+position = Vector2(5300, 460)
+hint = "TIME zone: press R to REWIND, then shoot the broken bridge to rebuild it and cross."
+
+[node name="H9" parent="." instance=ExtResource("1_hz")]
+position = Vector2(7150, 460)
+hint = "CLONE zone: FIRE to record a path. Your ghost replays it — send it to hold the plate, then slip through the gate."
+
+[node name="H10" parent="." instance=ExtResource("1_hz")]
+position = Vector2(9000, 460)
+hint = "BOSS: it's SHIELDED! Zap it with ELECTRIC to drop the shield, then FIRE burns it 2x. REWIND its shots to reflect them."

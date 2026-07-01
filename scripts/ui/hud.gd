@@ -9,6 +9,7 @@ var _connected := false
 var _gun: Node = null
 var _gs: Node = null
 var _bc: Node = null
+@onready var _shard_label: Label = get_node_or_null("../ShardCount")
 
 func _process(delta: float) -> void:
 	# Toggle the whole HUD with [H] — but never while paused (a menu is up), so it
@@ -38,7 +39,9 @@ func _process(delta: float) -> void:
 		txt = _gun.status_text()
 
 	if _gs != null:
-		txt += "\n♥ %d      ✦ %d shards      [Esc] pause      [H] hide" % [_gs.lives, _gs.shards]
+		txt += "\n♥ %d      [Esc] pause      [H] hide" % _gs.lives
+		if _shard_label != null:
+			_shard_label.text = "✦ %d" % _gs.shards
 
 	if _banner_t > 0.0:
 		_banner_t -= delta

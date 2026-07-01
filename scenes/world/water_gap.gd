@@ -15,7 +15,8 @@ func _ready() -> void:
 func apply_element(element: String, _bullet: Node) -> void:
 	if element == "ice" and not frozen:
 		frozen = true
-		ice_col.disabled = false
+		# Deferred: apply_element runs inside the bullet's area/body callback.
+		ice_col.set_deferred("disabled", false)
 		ice_vis.visible = true
 		if water_vis != null:
 			water_vis.modulate.a = 0.3

@@ -29,8 +29,9 @@ Contact damage: a `Touch`/`Hurt` `Area2D` (layer 0, mask 2) calls `player.take_d
 ## Add an enemy
 
 Copy `walker.gd/.tscn` (ground) or `flyer.gd/.tscn` (air). Implement the contract above, keep the
-body on **layer 1 / mask 1**, cache the player via a lazy group lookup, use `Juice`/`Audio` for
-feedback. Full recipe: [../../docs/EXTENDING.md](../../docs/EXTENDING.md).
+body on **layer 3 (value 4) / mask 1** — so the player passes *through* it (contact damage via the
+`Touch` area) instead of being physically blocked/launched — cache the player via a lazy group
+lookup, use `Juice`/`Audio` for feedback. Full recipe: [../../docs/EXTENDING.md](../../docs/EXTENDING.md).
 
 ## Invariants & gotchas
 

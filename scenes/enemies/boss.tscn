@@ -10,7 +10,7 @@ size = Vector2(96, 96)
 size = Vector2(150, 150)
 
 [node name="Boss" type="CharacterBody2D"]
-collision_layer = 1
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_boss")
 
@@ -38,3 +38,14 @@ polygon = PackedVector2Array(-82, -9, 82, -9, 82, 9, -82, 9)
 [node name="BarFill" type="Polygon2D" parent="HealthBar"]
 color = Color(1, 0.3, 0.35, 1)
 polygon = PackedVector2Array(-78, -6, 78, -6, 78, 6, -78, 6)
+
+[node name="Status" type="Label" parent="."]
+offset_left = -170.0
+offset_top = -194.0
+offset_right = 170.0
+offset_bottom = -164.0
+horizontal_alignment = 1
+text = "SHIELDED - hit with ELECTRIC"
+theme_override_colors/font_outline_color = Color(0.05, 0.03, 0.1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 15

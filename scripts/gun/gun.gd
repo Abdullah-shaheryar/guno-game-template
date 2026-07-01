@@ -10,6 +10,9 @@ var modes: Array = []
 var current: int = 0
 
 @onready var muzzle: Marker2D = $Muzzle
+@onready var _tip: Polygon2D = get_node_or_null("Tip")
+@onready var _body: Polygon2D = get_node_or_null("Body")
+@onready var _barrel: Polygon2D = get_node_or_null("Barrel")
 # Autoloads resolved once (they never change) instead of per-shot path lookups.
 @onready var _audio: Node = get_node_or_null("/root/Audio")
 @onready var _wp: Node = get_node_or_null("/root/WeaponProgress")
@@ -44,6 +47,14 @@ func _process(delta: float) -> void:
 	var m = _active()
 	if m == null:
 		return
+	# Recolour the gun to the active mode — the tip ball shows the element in Elemental.
+	if _tip != null and m.has_method("tip_color"):
+		_tip.color = m.tip_color()
+	if _body != null and m.has_method("gun_color"):
+		var gc: Color = m.gun_color()
+		_body.color = gc
+		if _barrel != null:
+			_barrel.color = gc.lightened(0.18)
 	if Input.is_action_just_pressed("fire"):
 		m.fire(aim_dir(), muzzle.global_position)
 		if _audio != null:

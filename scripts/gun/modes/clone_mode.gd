@@ -72,3 +72,9 @@ func mode_label() -> String:
 
 func mode_key() -> String:
 	return "Clone"
+
+func tip_color() -> Color:
+	return Color(0.5, 0.95, 1.0)
+
+func gun_color() -> Color:
+	return Color(0.36, 0.56, 0.64)

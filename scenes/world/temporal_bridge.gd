@@ -17,6 +17,8 @@ func apply_time(direction: int, _bolt: Node) -> void:
 	_refresh()
 
 func _refresh() -> void:
-	solid_col.disabled = not intact
+	# Deferred: apply_time runs inside the time bolt's hit callback, where a
+	# direct collision toggle can be dropped mid physics-flush.
+	solid_col.set_deferred("disabled", not intact)
 	intact_vis.visible = intact
 	broken_vis.visible = not intact
