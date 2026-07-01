@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/hint_zone.tscn" id="1_hz"]
+
+[node name="Hints" type="Node2D"]
+
+[node name="H1" parent="." instance=ExtResource("1_hz")]
+position = Vector2(-1040, 460)
+hint = "Move: A / D    Jump: Space / W    Aim with the mouse"
+
+[node name="H2" parent="." instance=ExtResource("1_hz")]
+position = Vector2(-560, 460)
+hint = "Fire: J or Left-Click.   Step on a portal and press Up / I  (or press 1-4 to warp)"
+
+[node name="H3" parent="." instance=ExtResource("1_hz")]
+position = Vector2(250, 460)
+hint = "Q / E switch your 4 gun modes.   R = secondary (cycle element / rewind)"
+
+[node name="H4" parent="." instance=ExtResource("1_hz")]
+position = Vector2(700, 460)
+hint = "Walls only break to the right element — switch to FIRE (R) and melt the ice wall!"
+
+[node name="H5" parent="." instance=ExtResource("1_hz")]
+position = Vector2(1350, 460)
+hint = "Fire ON the beat (the gold ring pulses) for a POWER shot. Grab gold shards!"

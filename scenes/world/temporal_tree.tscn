@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/temporal_tree.gd" id="1_tt"]
+
+[sub_resource type="RectangleShape2D" id="region"]
+size = Vector2(260, 360)
+
+[sub_resource type="RectangleShape2D" id="s1"]
+size = Vector2(110, 100)
+
+[sub_resource type="RectangleShape2D" id="s2"]
+size = Vector2(110, 200)
+
+[sub_resource type="RectangleShape2D" id="s3"]
+size = Vector2(110, 300)
+
+[node name="TemporalTree" type="Area2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_tt")
+
+[node name="DetectRegion" type="CollisionShape2D" parent="."]
+shape = SubResource("region")
+
+[node name="SaplingVisual" type="Polygon2D" parent="."]
+color = Color(0.3, 0.7, 0.35, 1)
+polygon = PackedVector2Array(-10, 0, 0, -34, 10, 0)
+
+[node name="TrunkVisual" type="Polygon2D" parent="."]
+color = Color(0.45, 0.32, 0.2, 1)
+polygon = PackedVector2Array(-14, 0, 14, 0, 14, -180, -14, -180)
+
+[node name="CanopyVisual" type="Polygon2D" parent="."]
+color = Color(0.25, 0.65, 0.32, 1)
+polygon = PackedVector2Array(-70, -150, 70, -150, 50, -230, -50, -230)
+
+[node name="Step1" type="StaticBody2D" parent="."]
+position = Vector2(0, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Vis" type="Polygon2D" parent="Step1"]
+color = Color(0.4, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-55, -50, 55, -50, 55, 50, -55, 50)
+
+[node name="Col" type="CollisionShape2D" parent="Step1"]
+shape = SubResource("s1")
+
+[node name="Step2" type="StaticBody2D" parent="."]
+position = Vector2(90, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Vis" type="Polygon2D" parent="Step2"]
+color = Color(0.4, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-55, -100, 55, -100, 55, 100, -55, 100)
+
+[node name="Col" type="CollisionShape2D" parent="Step2"]
+shape = SubResource("s2")
+
+[node name="Step3" type="StaticBody2D" parent="."]
+position = Vector2(180, 0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Vis" type="Polygon2D" parent="Step3"]
+color = Color(0.4, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-55, -150, 55, -150, 55, 150, -55, 150)
+
+[node name="Col" type="CollisionShape2D" parent="Step3"]
+shape = SubResource("s3")

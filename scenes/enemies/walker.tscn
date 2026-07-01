@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/walker.gd" id="1_walker"]
+[ext_resource type="Texture2D" path="res://art/walker.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w"]
+size = Vector2(34, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_touch"]
+size = Vector2(44, 48)
+
+[node name="Walker" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_walker")
+
+[node name="Visual" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_tex")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w")
+
+[node name="Touch" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="TouchCol" type="CollisionShape2D" parent="Touch"]
+shape = SubResource("RectangleShape2D_touch")

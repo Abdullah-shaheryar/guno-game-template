@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/pressure_plate.tscn" id="1_plate"]
+[ext_resource type="PackedScene" path="res://scenes/world/gate.tscn" id="2_gate"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/walker.tscn" id="3_walker"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(1100, 80)
+
+[node name="Zone4" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(7650, 660)
+
+[node name="FloorVis" type="Polygon2D" parent="Floor"]
+color = Color(0.28, 0.34, 0.42, 1)
+polygon = PackedVector2Array(-550, -40, 550, -40, 550, 40, -550, 40)
+
+[node name="FloorCol" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("floor")
+
+[node name="Walker" parent="." instance=ExtResource("3_walker")]
+position = Vector2(7250, 580)
+
+[node name="Plate" parent="." instance=ExtResource("1_plate")]
+position = Vector2(7400, 615)
+door_path = NodePath("../Gate")
+
+[node name="Gate" parent="." instance=ExtResource("2_gate")]
+position = Vector2(7750, 520)
+
+[node name="ExitFlag" type="Polygon2D" parent="."]
+position = Vector2(8050, 540)
+color = Color(0.3, 0.9, 0.4, 1)
+polygon = PackedVector2Array(-5, -120, 5, -120, 5, 80, -5, 80)
+
+[node name="ExitBanner" type="Polygon2D" parent="ExitFlag"]
+color = Color(0.95, 0.82, 0.2, 1)
+polygon = PackedVector2Array(5, -120, 74, -98, 5, -76)

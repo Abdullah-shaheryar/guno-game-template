@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="Gradient" id="grad"]
+offsets = PackedFloat32Array(0, 0.5, 0.78, 1)
+colors = PackedColorArray(0.13, 0.1, 0.28, 1, 0.32, 0.22, 0.46, 1, 0.62, 0.36, 0.46, 1, 0.96, 0.62, 0.45, 1)
+
+[sub_resource type="GradientTexture2D" id="gradtex"]
+gradient = SubResource("grad")
+width = 8
+height = 256
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[node name="BG" type="CanvasLayer"]
+layer = -100
+
+[node name="Sky" type="TextureRect" parent="."]
+texture = SubResource("gradtex")
+expand_mode = 1
+stretch_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MoonGlow" type="Polygon2D" parent="."]
+position = Vector2(1040, 150)
+color = Color(1, 0.92, 0.7, 0.18)
+polygon = PackedVector2Array(95, 0, 87.8, 36.4, 67.2, 67.2, 36.4, 87.8, 0, 95, -36.4, 87.8, -67.2, 67.2, -87.8, 36.4, -95, 0, -87.8, -36.4, -67.2, -67.2, -36.4, -87.8, 0, -95, 36.4, -87.8, 67.2, -67.2, 87.8, -36.4)
+
+[node name="Moon" type="Polygon2D" parent="."]
+position = Vector2(1040, 150)
+color = Color(1, 0.95, 0.84, 0.95)
+polygon = PackedVector2Array(55, 0, 50.8, 21, 38.9, 38.9, 21, 50.8, 0, 55, -21, 50.8, -38.9, 38.9, -50.8, 21, -55, 0, -50.8, -21, -38.9, -38.9, -21, -50.8, 0, -55, 21, -50.8, 38.9, -38.9, 50.8, -21)
+
+[node name="Stars" type="Polygon2D" parent="."]
+color = Color(1, 1, 0.95, 0.85)
+polygon = PackedVector2Array(180, 90, 186, 90, 186, 96, 180, 96, 320, 160, 326, 160, 326, 166, 320, 166, 540, 70, 546, 70, 546, 76, 540, 76, 700, 130, 706, 130, 706, 136, 700, 136, 860, 80, 866, 80, 866, 86, 860, 86, 250, 220, 256, 220, 256, 226, 250, 226, 620, 200, 626, 200, 626, 206, 620, 206)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27)]
+
+[node name="HillsBack" type="Polygon2D" parent="."]
+color = Color(0.3, 0.22, 0.42, 1)
+polygon = PackedVector2Array(0, 560, 200, 500, 450, 545, 700, 480, 1000, 525, 1280, 495, 1280, 720, 0, 720)
+
+[node name="HillsMid" type="Polygon2D" parent="."]
+color = Color(0.22, 0.16, 0.34, 1)
+polygon = PackedVector2Array(0, 620, 260, 575, 560, 625, 820, 560, 1100, 615, 1280, 585, 1280, 720, 0, 720)
+
+[node name="HillsFront" type="Polygon2D" parent="."]
+color = Color(0.14, 0.1, 0.24, 1)
+polygon = PackedVector2Array(0, 678, 320, 640, 640, 685, 980, 632, 1280, 670, 1280, 720, 0, 720)

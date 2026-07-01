@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/gun/gun.gd" id="2_gun"]
+[ext_resource type="Script" path="res://scripts/gun/modes/elemental_mode.gd" id="3_elem"]
+[ext_resource type="PackedScene" path="res://scenes/gun/bullet.tscn" id="4_bullet"]
+[ext_resource type="Script" path="res://scripts/gun/modes/gravity_mode.gd" id="5_grav"]
+[ext_resource type="Script" path="res://scripts/gun/modes/time_mode.gd" id="6_time"]
+[ext_resource type="Script" path="res://scripts/gun/modes/clone_mode.gd" id="7_clone"]
+[ext_resource type="Texture2D" path="res://art/hero.png" id="8_hero"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(28, 48)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_player")
+
+[node name="Visual" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_hero")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.3, 1.3)
+offset = Vector2(0, -60)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+ignore_rotation = true
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, -6)
+script = ExtResource("2_gun")
+bullet_scene = ExtResource("4_bullet")
+
+[node name="Grip" type="Polygon2D" parent="Gun"]
+color = Color(0.22, 0.2, 0.26, 1)
+polygon = PackedVector2Array(4, 4, 13, 4, 15, 20, 6, 20)
+
+[node name="Body" type="Polygon2D" parent="Gun"]
+color = Color(0.34, 0.36, 0.45, 1)
+polygon = PackedVector2Array(0, -7, 26, -7, 31, -2, 31, 2, 26, 7, 0, 7)
+
+[node name="Barrel" type="Polygon2D" parent="Gun"]
+color = Color(0.52, 0.54, 0.64, 1)
+polygon = PackedVector2Array(28, -3.5, 46, -3.5, 46, 3.5, 28, 3.5)
+
+[node name="Tip" type="Polygon2D" parent="Gun"]
+position = Vector2(48, 0)
+color = Color(0.4, 0.9, 1, 1)
+polygon = PackedVector2Array(-3, 0, 0, -4, 4, 0, 0, 4)
+
+[node name="Muzzle" type="Marker2D" parent="Gun"]
+position = Vector2(50, 0)
+
+[node name="Elemental" type="Node" parent="Gun"]
+script = ExtResource("3_elem")
+
+[node name="Gravity" type="Node" parent="Gun"]
+script = ExtResource("5_grav")
+
+[node name="Time" type="Node" parent="Gun"]
+script = ExtResource("6_time")
+
+[node name="Clone" type="Node" parent="Gun"]
+script = ExtResource("7_clone")

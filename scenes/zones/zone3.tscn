@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/walker.tscn" id="1_walker"]
+[ext_resource type="PackedScene" path="res://scenes/world/temporal_bridge.tscn" id="2_bridge"]
+[ext_resource type="PackedScene" path="res://scenes/world/temporal_tree.tscn" id="3_tree"]
+
+[sub_resource type="RectangleShape2D" id="entry"]
+size = Vector2(700, 80)
+
+[sub_resource type="RectangleShape2D" id="mid"]
+size = Vector2(700, 80)
+
+[sub_resource type="RectangleShape2D" id="ledge"]
+size = Vector2(430, 60)
+
+[node name="Zone3" type="Node2D"]
+
+[node name="EntryFloor" type="StaticBody2D" parent="."]
+position = Vector2(5550, 660)
+
+[node name="EntryVis" type="Polygon2D" parent="EntryFloor"]
+color = Color(0.32, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-350, -40, 350, -40, 350, 40, -350, 40)
+
+[node name="EntryCol" type="CollisionShape2D" parent="EntryFloor"]
+shape = SubResource("entry")
+
+[node name="MidFloor" type="StaticBody2D" parent="."]
+position = Vector2(6450, 660)
+
+[node name="MidVis" type="Polygon2D" parent="MidFloor"]
+color = Color(0.32, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-350, -40, 350, -40, 350, 40, -350, 40)
+
+[node name="MidCol" type="CollisionShape2D" parent="MidFloor"]
+shape = SubResource("mid")
+
+[node name="ExitLedge" type="StaticBody2D" parent="."]
+position = Vector2(6835, 560)
+
+[node name="LedgeVis" type="Polygon2D" parent="ExitLedge"]
+color = Color(0.32, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-215, -30, 215, -30, 215, 30, -215, 30)
+
+[node name="LedgeCol" type="CollisionShape2D" parent="ExitLedge"]
+shape = SubResource("ledge")
+
+[node name="Walker" parent="." instance=ExtResource("1_walker")]
+position = Vector2(5450, 580)
+
+[node name="TemporalBridge" parent="." instance=ExtResource("2_bridge")]
+position = Vector2(6050, 635)
+
+[node name="TemporalTree" parent="." instance=ExtResource("3_tree")]
+position = Vector2(6400, 620)
+
+[node name="ExitFlag" type="Polygon2D" parent="."]
+position = Vector2(6950, 450)
+color = Color(0.3, 0.9, 0.4, 1)
+polygon = PackedVector2Array(-5, -120, 5, -120, 5, 80, -5, 80)
+
+[node name="ExitBanner" type="Polygon2D" parent="ExitFlag"]
+color = Color(0.95, 0.82, 0.2, 1)
+polygon = PackedVector2Array(5, -120, 74, -98, 5, -76)

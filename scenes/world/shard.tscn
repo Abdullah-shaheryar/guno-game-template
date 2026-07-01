@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/shard.gd" id="1_shard"]
+
+[sub_resource type="CircleShape2D" id="c"]
+radius = 16.0
+
+[node name="Shard" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_shard")
+
+[node name="Glow" type="Polygon2D" parent="."]
+color = Color(1, 0.85, 0.35, 0.25)
+polygon = PackedVector2Array(0, -22, 16, 0, 0, 22, -16, 0)
+
+[node name="Gem" type="Polygon2D" parent="."]
+color = Color(1, 0.82, 0.25, 1)
+polygon = PackedVector2Array(0, -14, 11, -3, 6, 15, -6, 15, -11, -3)
+
+[node name="Facet" type="Polygon2D" parent="."]
+color = Color(1, 0.95, 0.7, 1)
+polygon = PackedVector2Array(0, -14, 5, -3, 0, 4, -5, -3)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("c")

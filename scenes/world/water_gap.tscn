@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/water_gap.gd" id="1_water"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_region"]
+size = Vector2(320, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ice"]
+size = Vector2(320, 36)
+
+[node name="WaterGap" type="Area2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_water")
+
+[node name="WaterVisual" type="Polygon2D" parent="."]
+color = Color(0.2, 0.45, 0.9, 0.55)
+polygon = PackedVector2Array(-160, -70, 160, -70, 160, 130, -160, 130)
+
+[node name="Region" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_region")
+
+[node name="IcePlatform" type="StaticBody2D" parent="."]
+position = Vector2(0, -52)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="IcePlatform"]
+color = Color(0.72, 0.9, 1, 0.95)
+polygon = PackedVector2Array(-160, -18, 160, -18, 160, 18, -160, 18)
+
+[node name="Col" type="CollisionShape2D" parent="IcePlatform"]
+shape = SubResource("RectangleShape2D_ice")

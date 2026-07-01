@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="Theme" path="res://scenes/ui/menu_theme.tres" id="2_theme"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 40
+script = ExtResource("1_pause")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.03, 0.07, 0.62)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 460.0
+offset_top = 148.0
+offset_right = 820.0
+offset_bottom = 574.0
+theme = ExtResource("2_theme")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 24.0
+offset_right = -26.0
+offset_bottom = -24.0
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+horizontal_alignment = 1
+text = "PAUSED"
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 54
+
+[node name="Resume" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 52)
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 52)
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 52)
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 52)
+text = "Quit"

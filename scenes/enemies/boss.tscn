@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/boss.gd" id="1_boss"]
+[ext_resource type="Texture2D" path="res://art/boss.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(96, 96)
+
+[sub_resource type="RectangleShape2D" id="hurt"]
+size = Vector2(150, 150)
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_boss")
+
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_tex")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("body")
+
+[node name="Hurt" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HurtCol" type="CollisionShape2D" parent="Hurt"]
+shape = SubResource("hurt")
+
+[node name="HealthBar" type="Node2D" parent="."]
+position = Vector2(0, -140)
+
+[node name="BarBG" type="Polygon2D" parent="HealthBar"]
+color = Color(0, 0, 0, 0.55)
+polygon = PackedVector2Array(-82, -9, 82, -9, 82, 9, -82, 9)
+
+[node name="BarFill" type="Polygon2D" parent="HealthBar"]
+color = Color(1, 0.3, 0.35, 1)
+polygon = PackedVector2Array(-78, -6, 78, -6, 78, 6, -78, 6)

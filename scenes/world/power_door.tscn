@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/power_door.gd" id="1_door"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(40, 180)
+
+[node name="PowerDoor" type="StaticBody2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_door")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.5, 0.4, 0.3, 1)
+polygon = PackedVector2Array(-20, -90, 20, -90, 20, 90, -20, 90)
+
+[node name="Frame" type="Polygon2D" parent="."]
+color = Color(0.75, 0.7, 0.25, 1)
+polygon = PackedVector2Array(-26, -96, -20, -96, -20, 96, -26, 96)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_door")

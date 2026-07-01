@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/walker.tscn" id="1_walker"]
+[ext_resource type="PackedScene" path="res://scenes/world/hazard.tscn" id="2_hazard"]
+
+[sub_resource type="RectangleShape2D" id="entry"]
+size = Vector2(600, 80)
+
+[sub_resource type="RectangleShape2D" id="exit"]
+size = Vector2(700, 80)
+
+[sub_resource type="RectangleShape2D" id="ceil"]
+size = Vector2(1000, 60)
+
+[sub_resource type="RectangleShape2D" id="step"]
+size = Vector2(130, 28)
+
+[node name="Zone2" type="Node2D"]
+
+[node name="ZoneLabel" type="Polygon2D" parent="."]
+position = Vector2(3400, 360)
+color = Color(0.5, 0.45, 0.7, 0.5)
+polygon = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[node name="EntryFloor" type="StaticBody2D" parent="."]
+position = Vector2(3400, 660)
+
+[node name="EntryVis" type="Polygon2D" parent="EntryFloor"]
+color = Color(0.2, 0.42, 0.5, 1)
+polygon = PackedVector2Array(-300, -40, 300, -40, 300, 40, -300, 40)
+
+[node name="EntryCol" type="CollisionShape2D" parent="EntryFloor"]
+shape = SubResource("entry")
+
+[node name="ExitFloor" type="StaticBody2D" parent="."]
+position = Vector2(4850, 660)
+
+[node name="ExitVis" type="Polygon2D" parent="ExitFloor"]
+color = Color(0.2, 0.42, 0.5, 1)
+polygon = PackedVector2Array(-350, -40, 350, -40, 350, 40, -350, 40)
+
+[node name="ExitCol" type="CollisionShape2D" parent="ExitFloor"]
+shape = SubResource("exit")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(4100, 200)
+
+[node name="CeilVis" type="Polygon2D" parent="Ceiling"]
+color = Color(0.36, 0.32, 0.5, 1)
+polygon = PackedVector2Array(-500, -30, 500, -30, 500, 30, -500, 30)
+
+[node name="CeilCol" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("ceil")
+
+[node name="Walker" parent="." instance=ExtResource("1_walker")]
+position = Vector2(3450, 580)
+
+[node name="CeilingSpikes" parent="." instance=ExtResource("2_hazard")]
+position = Vector2(3400, 150)
+
+[node name="ExitFlag" type="Polygon2D" parent="."]
+position = Vector2(5150, 540)
+color = Color(0.3, 0.9, 0.4, 1)
+polygon = PackedVector2Array(-5, -120, 5, -120, 5, 80, -5, 80)
+
+[node name="ExitBanner" type="Polygon2D" parent="ExitFlag"]
+color = Color(0.95, 0.82, 0.2, 1)
+polygon = PackedVector2Array(5, -120, 74, -98, 5, -76)
+
+[node name="Step1" type="StaticBody2D" parent="."]
+position = Vector2(3880, 619)
+
+[node name="Step1Vis" type="Polygon2D" parent="Step1"]
+color = Color(0.24, 0.5, 0.55, 1)
+polygon = PackedVector2Array(-65, -14, 65, -14, 65, 14, -65, 14)
+
+[node name="Step1Col" type="CollisionShape2D" parent="Step1"]
+shape = SubResource("step")
+
+[node name="Step2" type="StaticBody2D" parent="."]
+position = Vector2(4100, 599)
+
+[node name="Step2Vis" type="Polygon2D" parent="Step2"]
+color = Color(0.24, 0.5, 0.55, 1)
+polygon = PackedVector2Array(-65, -14, 65, -14, 65, 14, -65, 14)
+
+[node name="Step2Col" type="CollisionShape2D" parent="Step2"]
+shape = SubResource("step")
+
+[node name="Step3" type="StaticBody2D" parent="."]
+position = Vector2(4320, 619)
+
+[node name="Step3Vis" type="Polygon2D" parent="Step3"]
+color = Color(0.24, 0.5, 0.55, 1)
+polygon = PackedVector2Array(-65, -14, 65, -14, 65, 14, -65, 14)
+
+[node name="Step3Col" type="CollisionShape2D" parent="Step3"]
+shape = SubResource("step")

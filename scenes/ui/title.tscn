@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/title.gd" id="1_title"]
+[ext_resource type="Texture2D" path="res://art/hero.png" id="2_hero"]
+
+[sub_resource type="Gradient" id="grad"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.1, 0.08, 0.24, 1, 0.24, 0.14, 0.38, 1, 0.55, 0.28, 0.42, 1)
+
+[sub_resource type="GradientTexture2D" id="gradtex"]
+gradient = SubResource("grad")
+width = 8
+height = 256
+fill_to = Vector2(0, 1)
+
+[node name="Title" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_title")
+
+[node name="Sky" type="TextureRect" parent="."]
+texture = SubResource("gradtex")
+expand_mode = 1
+stretch_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(640, 450)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_hero")
+
+[node name="Name" type="Label" parent="."]
+anchor_right = 1.0
+offset_top = 70.0
+offset_bottom = 210.0
+horizontal_alignment = 1
+text = "GUNO"
+theme_override_colors/font_color = Color(1, 0.95, 0.85, 1)
+theme_override_font_sizes/font_size = 120
+
+[node name="Tag" type="Label" parent="."]
+anchor_right = 1.0
+offset_top = 210.0
+offset_bottom = 250.0
+horizontal_alignment = 1
+text = "one gun · four powers"
+theme_override_colors/font_color = Color(0.82, 0.86, 1, 1)
+theme_override_font_sizes/font_size = 30
+
+[node name="Prompt" type="Label" parent="."]
+anchor_right = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_bottom = -60.0
+horizontal_alignment = 1
+text = "press any key to begin"
+theme_override_font_sizes/font_size = 26

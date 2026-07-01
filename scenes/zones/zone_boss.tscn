@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/boss.tscn" id="1_boss"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(1200, 80)
+
+[sub_resource type="RectangleShape2D" id="wall"]
+size = Vector2(60, 700)
+
+[sub_resource type="RectangleShape2D" id="ceil"]
+size = Vector2(1200, 60)
+
+[node name="ZoneBoss" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(9100, 660)
+
+[node name="FloorVis" type="Polygon2D" parent="Floor"]
+color = Color(0.3, 0.2, 0.26, 1)
+polygon = PackedVector2Array(-600, -40, 600, -40, 600, 40, -600, 40)
+
+[node name="FloorCol" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("floor")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(9100, 120)
+
+[node name="CeilCol" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("ceil")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(8530, 360)
+
+[node name="LeftWallCol" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("wall")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(9670, 360)
+
+[node name="RightWallCol" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("wall")
+
+[node name="Boss" parent="." instance=ExtResource("1_boss")]
+position = Vector2(9150, 360)
+
+[node name="VictoryFlag" type="Polygon2D" parent="." groups=["victory"]]
+position = Vector2(9100, 470)
+visible = false
+color = Color(0.3, 0.95, 0.45, 1)
+polygon = PackedVector2Array(-90, -90, 90, -90, 90, 90, -90, 90)
+
+[node name="VictoryMark" type="Polygon2D" parent="VictoryFlag" groups=["victory"]]
+visible = false
+color = Color(1, 0.95, 0.4, 1)
+polygon = PackedVector2Array(-40, 0, -10, 40, 50, -40, 40, -55, -10, 15, -30, -15)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/hint_zone.gd" id="1_hz"]
+
+[sub_resource type="RectangleShape2D" id="s"]
+size = Vector2(150, 420)
+
+[node name="HintZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_hz")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("s")

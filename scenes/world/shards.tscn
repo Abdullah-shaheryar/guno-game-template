@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/shard.tscn" id="1_shard"]
+
+[node name="Shards" type="Node2D"]
+
+[node name="S1" parent="." instance=ExtResource("1_shard")]
+position = Vector2(-1180, 545)
+
+[node name="S2" parent="." instance=ExtResource("1_shard")]
+position = Vector2(-650, 545)
+
+[node name="S3" parent="." instance=ExtResource("1_shard")]
+position = Vector2(560, 470)
+
+[node name="S4" parent="." instance=ExtResource("1_shard")]
+position = Vector2(980, 350)
+
+[node name="S5" parent="." instance=ExtResource("1_shard")]
+position = Vector2(1450, 560)
+
+[node name="S6" parent="." instance=ExtResource("1_shard")]
+position = Vector2(3400, 560)
+
+[node name="S7" parent="." instance=ExtResource("1_shard")]
+position = Vector2(4100, 250)
+
+[node name="S8" parent="." instance=ExtResource("1_shard")]
+position = Vector2(4820, 560)
+
+[node name="S9" parent="." instance=ExtResource("1_shard")]
+position = Vector2(5650, 560)
+
+[node name="S10" parent="." instance=ExtResource("1_shard")]
+position = Vector2(6300, 560)
+
+[node name="S11" parent="." instance=ExtResource("1_shard")]
+position = Vector2(6900, 430)
+
+[node name="S12" parent="." instance=ExtResource("1_shard")]
+position = Vector2(7400, 560)
+
+[node name="S13" parent="." instance=ExtResource("1_shard")]
+position = Vector2(7950, 560)
+
+[node name="S14" parent="." instance=ExtResource("1_shard")]
+position = Vector2(9100, 560)

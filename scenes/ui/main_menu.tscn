@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://ccl03udqolijt"]
+
+[ext_resource type="Script" uid="uid://b3smih6uiccb8" path="res://scripts/ui/main_menu.gd" id="1_mm"]
+[ext_resource type="Theme" uid="uid://bvofptcntfe4g" path="res://scenes/ui/menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" uid="uid://bklxv3djny3as" path="res://art/hero.png" id="3_hero"]
+
+[sub_resource type="Gradient" id="grad"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.1, 0.08, 0.24, 1, 0.27, 0.16, 0.4, 1, 0.52, 0.27, 0.43, 1)
+
+[sub_resource type="GradientTexture2D" id="gradtex"]
+gradient = SubResource("grad")
+width = 8
+height = 256
+fill_to = Vector2(0, 1)
+
+[node name="MainMenu" type="Control" unique_id=1262430083]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("2_theme")
+script = ExtResource("1_mm")
+
+[node name="Sky" type="TextureRect" parent="." unique_id=1516991382]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("gradtex")
+expand_mode = 1
+
+[node name="MoonGlow" type="Polygon2D" parent="." unique_id=2143308128]
+position = Vector2(210, 150)
+color = Color(1, 0.92, 0.7, 0.16)
+polygon = PackedVector2Array(95, 0, 67.2, 67.2, 0, 95, -67.2, 67.2, -95, 0, -67.2, -67.2, 0, -95, 67.2, -67.2)
+
+[node name="Moon" type="Polygon2D" parent="." unique_id=1006035276]
+position = Vector2(210, 150)
+color = Color(1, 0.95, 0.84, 0.95)
+polygon = PackedVector2Array(55, 0, 38.9, 38.9, 0, 55, -38.9, 38.9, -55, 0, -38.9, -38.9, 0, -55, 38.9, -38.9)
+
+[node name="Stars" type="Polygon2D" parent="." unique_id=2116056020]
+color = Color(1, 1, 0.95, 0.8)
+polygon = PackedVector2Array(420, 90, 426, 90, 426, 96, 420, 96, 560, 60, 566, 60, 566, 66, 560, 66, 760, 110, 766, 110, 766, 116, 760, 116, 940, 70, 946, 70, 946, 76, 940, 76, 1080, 120, 1086, 120, 1086, 126, 1080, 126, 350, 180, 356, 180, 356, 186, 350, 186, 1140, 220, 1146, 220, 1146, 226, 1140, 226)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27)]
+
+[node name="HillsBack" type="Polygon2D" parent="." unique_id=431583590]
+color = Color(0.26, 0.18, 0.4, 1)
+polygon = PackedVector2Array(-500, 560, 250, 510, 520, 555, 800, 500, 1080, 545, 1780, 510, 1780, 1200, -500, 1200)
+
+[node name="HillsFront" type="Polygon2D" parent="." unique_id=5261643]
+color = Color(0.16, 0.11, 0.27, 1)
+polygon = PackedVector2Array(-500, 640, 320, 600, 660, 650, 980, 600, 1780, 640, 1780, 1200, -500, 1200)
+
+[node name="Sparkles" type="CPUParticles2D" parent="." unique_id=1053316047]
+position = Vector2(640, 760)
+amount = 50
+lifetime = 7.0
+preprocess = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(660, 12)
+direction = Vector2(0, -1)
+spread = 18.0
+gravity = Vector2(0, -7)
+initial_velocity_min = 6.0
+initial_velocity_max = 22.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(1, 1, 0.88, 0.5)
+
+[node name="Hero" type="Sprite2D" parent="." unique_id=451760618]
+position = Vector2(1050, 452)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("3_hero")
+flip_h = true
+
+[node name="Name" type="Label" parent="." unique_id=165401601]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 66.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(1, 0.96, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.05, 0.14, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 118
+text = "GUNO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Powers" type="RichTextLabel" parent="." unique_id=1229886670]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 222.0
+offset_bottom = 262.0
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center][color=#ff8c33]FIRE[/color]    [color=#b27dff]GRAVITY[/color]    [color=#5fd0e6]TIME[/color]    [color=#73f2ff]CLONE[/color][/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=872264096]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -28.0
+offset_right = 185.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Play" type="Button" parent="Menu" unique_id=1315481178]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+text = "Play"
+
+[node name="HowTo" type="Button" parent="Menu" unique_id=1434180575]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+text = "How to Play"
+
+[node name="Quit" type="Button" parent="Menu" unique_id=948874128]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+text = "Quit"
+
+[node name="ControlsPanel" type="Panel" parent="." unique_id=1286434913]
+visible = false
+layout_mode = 0
+offset_left = 370.0
+offset_top = 150.0
+offset_right = 910.0
+offset_bottom = 575.0
+
+[node name="VBox" type="VBoxContainer" parent="ControlsPanel" unique_id=709514314]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = -24.0
+theme_override_constants/separation = 14
+
+[node name="Heading" type="Label" parent="ControlsPanel/VBox" unique_id=231427700]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="ControlsPanel/VBox" unique_id=901907306]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Move      A / D   or   ← →
+Jump      Space / W
+Aim       Mouse          Fire   LMB / J
+Mode      Q / E          Secondary (element / rewind)   R
+Portal    ↑ / I          Warp to zone   1 – 4
+Pause     Esc
+
+One gun, four powers — melt, flip gravity, rewind time,
+and clone yourself. Fire ON the beat to hit harder!"
+
+[node name="Close" type="Button" parent="ControlsPanel/VBox" unique_id=1380739960]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+text = "Close"
+
+[node name="Volume" type="HBoxContainer" parent="." unique_id=1611975378]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -74.0
+offset_right = 384.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="VolLabel" type="Label" parent="Volume" unique_id=829287921]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Volume"
+
+[node name="VolSlider" type="HSlider" parent="Volume" unique_id=212487334]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.8

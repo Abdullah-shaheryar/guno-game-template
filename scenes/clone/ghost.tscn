@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/clone/ghost.gd" id="1_ghost"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(28, 48)
+
+[sub_resource type="RectangleShape2D" id="hit"]
+size = Vector2(34, 52)
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_ghost")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.4, 0.95, 1, 0.45)
+polygon = PackedVector2Array(-14, -24, 14, -24, 14, 24, -14, 24)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("body")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="HitCol" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("hit")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/world/moving_platform.tscn" id="1_mp"]
+[ext_resource type="PackedScene" path="res://scenes/world/bounce_pad.tscn" id="2_bp"]
+
+[node name="Dynamics" type="Node2D"]
+
+[node name="MP1" parent="." instance=ExtResource("1_mp")]
+position = Vector2(8800, 400)
+travel = Vector2(0, 130)
+period = 2.6
+
+[node name="MP2" parent="." instance=ExtResource("1_mp")]
+position = Vector2(9400, 350)
+travel = Vector2(150, 0)
+period = 3.2
+
+[node name="Bounce1" parent="." instance=ExtResource("2_bp")]
+position = Vector2(9100, 606)

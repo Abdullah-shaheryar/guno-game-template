@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/gun/bullet.gd" id="1_bullet"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b"]
+radius = 6.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_bullet")
+
+[node name="Trail" type="CPUParticles2D" parent="."]
+amount = 18
+lifetime = 0.28
+local_coords = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 24.0
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+color = Color(1, 0.6, 0.2, 0.8)
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(1, 0.6, 0.2, 1)
+polygon = PackedVector2Array(-7, -5, 7, -5, 11, 0, 7, 5, -7, 5)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b")

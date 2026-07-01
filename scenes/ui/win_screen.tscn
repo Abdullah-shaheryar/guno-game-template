@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/win_screen.gd" id="1_win"]
+[ext_resource type="Theme" path="res://scenes/ui/menu_theme.tres" id="2_theme"]
+
+[node name="WinScreen" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_win")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.12, 0.72)
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 430.0
+offset_top = 158.0
+offset_right = 850.0
+offset_bottom = 562.0
+theme = ExtResource("2_theme")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 26.0
+offset_right = -28.0
+offset_bottom = -26.0
+alignment = 1
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+horizontal_alignment = 1
+text = "VICTORY!"
+theme_override_colors/font_color = Color(1, 0.92, 0.4, 1)
+theme_override_font_sizes/font_size = 64
+
+[node name="Sub" type="Label" parent="Panel/VBox"]
+horizontal_alignment = 1
+text = "The crystal guardian is shattered."
+theme_override_font_sizes/font_size = 22
+
+[node name="PlayAgain" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 54)
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="Panel/VBox"]
+custom_minimum_size = Vector2(300, 54)
+text = "Main Menu"

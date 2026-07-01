@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://c6pfw77wsp4lf"]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/walker.tscn" id="2_walker"]
+[ext_resource type="PackedScene" path="res://scenes/world/ice_wall.tscn" id="3_ice"]
+[ext_resource type="PackedScene" path="res://scenes/world/water_gap.tscn" id="4_water"]
+[ext_resource type="PackedScene" path="res://scenes/world/power_door.tscn" id="5_door"]
+[ext_resource type="PackedScene" path="res://scenes/zones/zone2.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/zones/zone3.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" path="res://scenes/zones/zone4.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" path="res://scenes/zones/hub.tscn" id="10_ya4ey"]
+[ext_resource type="PackedScene" path="res://scenes/zones/zone_boss.tscn" id="11_eb6dy"]
+[ext_resource type="PackedScene" path="res://scenes/zones/background.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="12_jbj1t"]
+[ext_resource type="PackedScene" path="res://scenes/ui/win_screen.tscn" id="13_muem4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="14_dp3eg"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/flyer.tscn" id="15_0ld40"]
+[ext_resource type="PackedScene" path="res://scenes/world/pickup.tscn" id="16_gqmmt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_over.tscn" id="17_yc10j"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hint_overlay.tscn" id="18_jscy8"]
+[ext_resource type="PackedScene" path="res://scenes/world/shards.tscn" id="19_pm3ni"]
+[ext_resource type="PackedScene" path="res://scenes/world/hints.tscn" id="20_y6deb"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/turret.tscn" id="21_og1vs"]
+[ext_resource type="PackedScene" path="res://scenes/world/dynamics.tscn" id="22_jscy8"]
+[ext_resource type="PackedScene" path="res://scenes/world/underground.tscn" id="23_pm3ni"]
+
+[sub_resource type="RectangleShape2D" id="groundA"]
+size = Vector2(1700, 80)
+
+[sub_resource type="RectangleShape2D" id="groundB"]
+size = Vector2(1500, 80)
+
+[node name="World" type="Node2D" unique_id=352634270]
+
+[node name="Background" type="Polygon2D" parent="." unique_id=1116412209]
+visible = false
+color = Color(0.09, 0.1, 0.16, 1)
+polygon = PackedVector2Array(-600, -400, 3400, -400, 3400, 1000, -600, 1000)
+
+[node name="GroundA" type="StaticBody2D" parent="." unique_id=105459238]
+position = Vector2(500, 660)
+collision_mask = 0
+
+[node name="GroundAVis" type="Polygon2D" parent="GroundA" unique_id=863855652]
+color = Color(0.18, 0.46, 0.28, 1)
+polygon = PackedVector2Array(-850, -40, 850, -40, 850, 40, -850, 40)
+
+[node name="GroundACol" type="CollisionShape2D" parent="GroundA" unique_id=1212704746]
+shape = SubResource("groundA")
+
+[node name="GroundB" type="StaticBody2D" parent="." unique_id=293143491]
+position = Vector2(2350, 660)
+collision_mask = 0
+
+[node name="GroundBVis" type="Polygon2D" parent="GroundB" unique_id=1746977834]
+color = Color(0.18, 0.46, 0.28, 1)
+polygon = PackedVector2Array(-750, -40, 750, -40, 750, 40, -750, 40)
+
+[node name="GroundBCol" type="CollisionShape2D" parent="GroundB" unique_id=324243461]
+shape = SubResource("groundB")
+
+[node name="IceWall" parent="." unique_id=918336422 instance=ExtResource("3_ice")]
+position = Vector2(750, 540)
+
+[node name="Walker" parent="." unique_id=326811217 instance=ExtResource("2_walker")]
+position = Vector2(1150, 560)
+
+[node name="WaterGap" parent="." unique_id=600024008 instance=ExtResource("4_water")]
+position = Vector2(1475, 690)
+
+[node name="PowerDoor" parent="." unique_id=1633145873 instance=ExtResource("5_door")]
+position = Vector2(1850, 530)
+
+[node name="GoalFlag" type="Polygon2D" parent="." unique_id=1102602720]
+position = Vector2(2900, 540)
+color = Color(0.3, 0.9, 0.4, 1)
+polygon = PackedVector2Array(-5, -120, 5, -120, 5, 80, -5, 80)
+
+[node name="GoalBanner" type="Polygon2D" parent="GoalFlag" unique_id=851133552]
+color = Color(0.95, 0.82, 0.2, 1)
+polygon = PackedVector2Array(5, -120, 74, -98, 5, -76)
+
+[node name="Player" parent="." unique_id=1600049910 instance=ExtResource("1_player")]
+position = Vector2(-1000, 430)
+
+[node name="Zone2" parent="." unique_id=1187541582 instance=ExtResource("7_o6xl0")]
+
+[node name="Zone3" parent="." unique_id=1245713966 instance=ExtResource("8_tipki")]
+
+[node name="Zone4" parent="." unique_id=1921296137 instance=ExtResource("9_85g3d")]
+
+[node name="Hub" parent="." unique_id=1099040695 instance=ExtResource("10_ya4ey")]
+
+[node name="ZoneBoss" parent="." unique_id=2128195520 instance=ExtResource("11_eb6dy")]
+
+[node name="BG" parent="." unique_id=1974024840 instance=ExtResource("12_eb6dy")]
+
+[node name="HUD" parent="." unique_id=1795944671 instance=ExtResource("12_jbj1t")]
+
+[node name="WinScreen" parent="." unique_id=354745539 instance=ExtResource("13_muem4")]
+
+[node name="PauseMenu" parent="." unique_id=1652589997 instance=ExtResource("14_dp3eg")]
+
+[node name="Flyer1" parent="." unique_id=1546071524 instance=ExtResource("15_0ld40")]
+position = Vector2(1050, 380)
+
+[node name="Flyer2" parent="." unique_id=1140007197 instance=ExtResource("15_0ld40")]
+position = Vector2(8800, 330)
+
+[node name="Pickup1" parent="." unique_id=1419356534 instance=ExtResource("16_gqmmt")]
+position = Vector2(1200, 585)
+
+[node name="Flyer3" parent="." unique_id=1003883495 instance=ExtResource("15_0ld40")]
+position = Vector2(9400, 330)
+
+[node name="Pickup2" parent="." unique_id=175644507 instance=ExtResource("16_gqmmt")]
+position = Vector2(8650, 585)
+
+[node name="GameOver" parent="." unique_id=1758812939 instance=ExtResource("17_yc10j")]
+
+[node name="HintOverlay" parent="." unique_id=1747619581 instance=ExtResource("18_jscy8")]
+
+[node name="Shards" parent="." unique_id=1648612135 instance=ExtResource("19_pm3ni")]
+
+[node name="Hints" parent="." unique_id=2097721564 instance=ExtResource("20_y6deb")]
+
+[node name="Turret1" parent="." unique_id=1300848062 instance=ExtResource("21_og1vs")]
+position = Vector2(3650, 596)
+
+[node name="Turret2" parent="." unique_id=710288394 instance=ExtResource("21_og1vs")]
+position = Vector2(5550, 596)
+
+[node name="Dynamics" parent="." unique_id=663663455 instance=ExtResource("22_jscy8")]
+
+[node name="Underground" parent="." unique_id=231429828 instance=ExtResource("23_pm3ni")]

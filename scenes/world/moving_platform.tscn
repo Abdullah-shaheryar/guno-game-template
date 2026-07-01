@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/moving_platform.gd" id="1_mp"]
+
+[sub_resource type="RectangleShape2D" id="s"]
+size = Vector2(130, 26)
+
+[node name="MovingPlatform" type="AnimatableBody2D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_mp")
+
+[node name="Vis" type="Polygon2D" parent="."]
+color = Color(0.5, 0.55, 0.72, 1)
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, 13, -65, 13)
+
+[node name="Trim" type="Polygon2D" parent="."]
+color = Color(0.7, 0.75, 0.95, 1)
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, -8, -65, -8)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("s")

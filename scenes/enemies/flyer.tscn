@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/flyer.gd" id="1_flyer"]
+[ext_resource type="Texture2D" path="res://art/flyer.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(46, 36)
+
+[sub_resource type="RectangleShape2D" id="touch"]
+size = Vector2(56, 46)
+
+[node name="Flyer" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_flyer")
+
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(0.062, 0.062)
+texture = ExtResource("2_tex")
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("body")
+
+[node name="Touch" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="TouchCol" type="CollisionShape2D" parent="Touch"]
+shape = SubResource("touch")

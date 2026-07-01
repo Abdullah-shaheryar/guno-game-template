@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/bounce_pad.gd" id="1_bp"]
+
+[sub_resource type="RectangleShape2D" id="s"]
+size = Vector2(72, 30)
+
+[node name="BouncePad" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_bp")
+
+[node name="Base" type="Polygon2D" parent="."]
+color = Color(0.2, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-36, 4, 36, 4, 30, 16, -30, 16)
+
+[node name="Spring" type="Polygon2D" parent="."]
+color = Color(0.45, 0.95, 0.55, 1)
+polygon = PackedVector2Array(-30, -12, 30, -12, 34, 4, -34, 4)
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource("s")
